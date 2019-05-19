@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Usage: ./lights-control <intensity 0-100> <color 0-100> <duration 0-9999>
+
+DEVICE=$(./p list | grep Photon | sed 's/^.*\[\(.*\)\].*/\1/')
+INTENSITY=$(printf "%03d" $1)
+COLOR=$(printf "%03d" $2)
+DURATION=$(printf "%04d" $3)
+./p function call $DEVICE setLight "temp-a:$INTENSITY:$COLOR:$DURATION"
