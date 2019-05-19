@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Usage: ./pumps-control <on|off> <duration minutes 0-9999>
+
+DEVICE=$(./p list | grep Photon | sed 's/^.*\[\(.*\)\].*/\1/')
+
+if [ "$1" == "on" ]; then
+  STATE=1
+elif [ "$1" == "off" ]; then
+  STATE=0
+else
+  STATE=-1
+fi
+
+DURATION=$(printf "%04d" $2)
+./p function call $DEVICE setPump "temp-$STATE:$DURATION"
