@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Usage: ./lights-control <intensity 0-100> <color 0-100> <duration 0-9999>
+# Usage: ./lights-control <intensity % 0-100> <color % 0-100> <duration minutes 0-9999>
 
 DEVICE=$(./p list | grep Photon | sed 's/^.*\[\(.*\)\].*/\1/')
 INTENSITY=$(printf "%03d" $1)
