@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Usage: ./fans-schedule <off|low|medium|high>
+
+DEVICE=$(./p list | grep Photon | sed 's/^.*\[\(.*\)\].*/\1/')
+
+if [ "$1" == "off" ]; then
+  STATE=0
+elif [ "$1" == "low" ]; then
+  STATE=1
+elif [ "$1" == "medium" ]; then
+  STATE=2
+elif [ "$1" == "high" ]; then
+  STATE=3
+else
+  STATE=-1
+fi
+
+./p function call $DEVICE setFan "schedule-$STATE:1"
