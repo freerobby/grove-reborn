@@ -4,5 +4,4 @@
 
 2. Run `./p login`
 
-
-"temp-a:100:050:0010"
+3. Control lights example payload: "temp-a:100:050:0010"
