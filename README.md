@@ -33,7 +33,7 @@ Use the following scripts to schedule lights and pumps and set default behaviors
 ```
 
 ```
-./lights-schedule <garden|seedling|aquarium> <intensity %> <color %> <sunrise HHMM> <sunset HHMM>
+./lights-schedule ./lights-schedule <garden|seedling|aquarium> <intensity %> <color %> <sunrise HHMM> <sunrise duration in mins> <sunset HHMM> <sunset duration in mins>
 ```
 
 ```

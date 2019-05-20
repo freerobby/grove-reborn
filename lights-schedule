@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Usage: ./lights-schedule <garden|seedling|aquarium> <intensity %> <color %> <sunrise HHMM> <sunset HHMM>
+# Usage: ./lights-schedule <garden|seedling|aquarium> <intensity %> <color %> <sunrise HHMM> <sunrise duration in mins> <sunset HHMM> <sunset duration in mins>
 
 
 DEVICE=$(./p list | grep Photon | sed 's/^.*\[\(.*\)\].*/\1/')
@@ -15,11 +15,21 @@ else
   LIGHT=-1
 fi
 
+# Remove leading 0s from time so they are not treated as octal
+sunrise="$(echo $4 | sed 's/^0*//')"
+sunset="$(echo $6 | sed 's/^0*//')"
+
+# Convert times to seconds-after-midnight
+sunrise_seconds="$(( ($sunrise / 100 * 60 ) + ( $sunrise % 100) ))"
+sunset_seconds="$(( ($sunset / 100 * 60 ) + ( $sunset % 100) ))"
+
 INTENSITY=$(printf "%03d" $2)
 COLOR=$(printf "%03d" $3)
-SUNRISE=$(printf "%04d" $4)
-SUNSET=$(printf "%04d" $5)
+SUNRISE=$(printf "%04d" $sunrise_seconds)
+SUNRISE_DURATION=$(printf "%03d" $5)
+SUNSET=$(printf "%04d" $sunset_seconds)
+SUNSET_DURATION=$(printf "%03d" $7)
 DAYSETTINGS="$INTENSITY:$COLOR"
 NIGHTSETTINGS="000:000"
 
-./p function call $DEVICE setLight "schedule-$LIGHT:$SUNRISE:030:$SUNSET:030:$DAYSETTINGS:$NIGHTSETTINGS:2"
+./p function call $DEVICE setLight "schedule-$LIGHT:$SUNRISE:$SUNRISE_DURATION:$SUNSET:$SUNSET_DURATION:$DAYSETTINGS:$NIGHTSETTINGS:2"
