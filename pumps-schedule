@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Usage: ./pumps-schedule <minutes on> <minutes off>
+
+
+DEVICE=$(./p list | grep Photon | sed 's/^.*\[\(.*\)\].*/\1/')
+
+MINS_ON=$(printf "%03d" $1)
+MINS_OFF=$(printf "%03d" $2)
+
+./p function call $DEVICE setPump "schedule-$MINS_ON:$MINS_OFF"
