@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Usage: ./heater-control <temperature in degrees Celcius, or 0 for off>
+
+DEVICE=$(./p list | grep Photon | sed 's/^.*\[\(.*\)\].*/\1/')
+
+TEMPERATURE=$(printf "%03d" $1)
+
+DURATION=$(printf "%04d" $2)
+./p function call $DEVICE muxFunction "aquariumHeaterTargetTemperature-$TEMPERATURE"
