@@ -2,7 +2,7 @@
 
 0. Get your Grove Particle board transferred into your own Particle.io account. WARNING: NO OFFICIAL GROVE APP WILL WORK AFTER YOU DO THIS.
 
-1. Install particle-cli in this working directory.
+1. Install [particle-cli](https://github.com/particle-iot/particle-cli) in this working directory.
 
 2. Run `./p login`
 
