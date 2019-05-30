@@ -1,10 +1,16 @@
 # Setup
 
-0. Get your Grove Particle board transferred into your own Particle.io account. WARNING: NO OFFICIAL GROVE APP WILL WORK AFTER YOU DO THIS.
+WARNING: NO OFFICIAL GROVE APP WILL WORK AFTER YOU FOLLOW THESE STEPS.
 
-1. Install [particle-cli](https://github.com/particle-iot/particle-cli) in this working directory.
+1. Create a [Particle.io](https://particle.io) account.
 
-2. Run `./p login`
+2. Get your Grove Photon released from the corporate Particle.io account. Make sure you get the Device ID of your Photon when this happens, so that you can claim it.
+
+3. Install particle-cli via `bash <( curl -sL https://particle.io/install-cli )`
+
+4. Log into particle.io via `particle login`
+
+5. Claim your device via `particle device add <your device ID here>`
 
 # Real Time control
 
