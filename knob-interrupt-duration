@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Usage: ./knob-interrupt-duration <minutes 0-255>
+
+DEVICE=$(./p list | grep Photon | sed 's/^.*\[\(.*\)\].*/\1/')
+
+DURATION=$(printf "%03d" $1)
+
+./p function call $DEVICE muxFunction "knobInterruptionDuration-$DURATION"
