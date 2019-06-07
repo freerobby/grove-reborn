@@ -1,5 +1,9 @@
 # Grove, Reborn
 
+![](grove-ecosystem.jpg)
+
+## Background
+
 In 2015, Grove Labs launched the [Grove Ecosystem](https://www.kickstarter.com/projects/grove-ecosystem/grove-ecosystem-grow-fresh-food-in-your-home), a beautiful all-in-one home aquaponic system, on Kickstarter. Grove Labs delivered all units, but unfortunately went out of business a few years later.
 
 Grove's Apple Developer membership eventually expired, causing the app (which controls all Grove functionality) to be removed from the iOS App Store. At this point, Grove owners had no way to control their ecosystems.
